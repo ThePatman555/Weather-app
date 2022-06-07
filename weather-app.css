@@ -1,0 +1,23 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.card {
+    color:white;
+    padding: 2em;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 450px;
+    margin:1em;
+    background: rgba(0, 0, 0, 0.75)
+}
+.description{
+    text-transform: capitalize;
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
