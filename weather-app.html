@@ -11,7 +11,7 @@
 </head>
 <body class="container">
     
-    <div class="card">
+    <div id="height" class="card">
         <div class="input-group search">
             <input type="search" class="form-control rounded search-bar" placeholder="Enter City" aria-label="Search" aria-describedby="search-addon" />
             <button type="button" class="btn ml-1 btn-primary">Go</button>
@@ -26,9 +26,36 @@
             </div>
             <div class="humidity"></div>
             <div class="wind"></div>
+            <div id="compare-remove" class="compare mt-3 text-center">
+                <button type="button" class="compare-btn btn ml-1 btn-primary">Compare Locations</button>
+            </div>
         </div>
-    </div>
+     </div>
+
+
+     <div id="compare" class="card hidden">
+        <div class="input-group search-c">
+            <input type="search" class="form-control rounded search-bar-c" placeholder="Enter City" aria-label="Search" aria-describedby="search-addon" />
+            <button type="button" class="btn ml-1 btn-primary">Go</button>
+        </div>
+        
+        <div class="weather-c mt-2">
+            <h2 class="city-c"></h2>
+            <h1 class="temp-c"></h1>
+            <div class="flex">
+                <img src="" alt="" class="icon-c">
+                <div class="description-c"></div>
+            </div>
+            <div class="humidity-c"></div>
+            <div class="wind-c"></div>
+        </div>
+     </div>
+        
+
+        
 
     <script src="./weather-app.js"></script>
 </body>
 </html>
+
+
