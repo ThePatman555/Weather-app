@@ -19,19 +19,18 @@ let weather = {
         document.querySelector(".temp").innerText = Math.floor(temp) + " °F";
         document.querySelector(".icon").src = "https://openweathermap.org/img/wn/"+ icon + ".png"
         document.querySelector(".description").innerText = description;
-        document.querySelector(".humidity").innerText = "Humidity: " + humidity;
+        document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind Speed: " + speed + " mph";
             //converting the html into the acquired values from the api
 
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')"
+        document.getElementById('left').style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')"
             //sets the background from unsplash as the city name which generates images from that location
-        var minCompare = document.getElementById('height');
+         minCompare = document.getElementById('height');
         minCompare.classList.add('min-height');
     },
     search: function() {
         this.fetchWeather(document.querySelector(".search-bar").value);
     } // grabs the value placed in the search bar and searches the api for it
-
 }
 
 weather.fetchWeather("San Francisco"); // defaults page to SF
@@ -46,13 +45,22 @@ document.querySelector(".search").addEventListener('keyup', (e) => {
 }); // initiates the search function whenever the enter button is pressed
 
 document.querySelector(".compare-btn").addEventListener("click", function(){
-    var cityCompare = document.getElementById('compare');
     var compareBtn = document.getElementById('compare-remove');
-    cityCompare.classList.remove('hidden');
+    var displayRight = document.getElementById('right');
     compareBtn.classList.add('hidden');
+    displayRight.style.display = "flex";
+    weatherCompare.fetchWeatherCompare("New York");
 }) // query selector for compare button
 
-let weatherCompare = {
+document.querySelector(".remove-btn").addEventListener('click', function(){
+    var hideRight = document.getElementById('right');
+    var compareBtn = document.getElementById('compare-remove');
+    hideRight.style.display = 'none';
+    compareBtn.classList.remove('hidden');
+})
+// adds feature to remove comparison city
+
+let weatherCompare = { //same as the weather object above just different classes are changed from the json data
     apiKey: "0f579d5dd26b99095d8f2ef554a9b61e" ,   
     fetchWeatherCompare: function(city){
         fetch(
@@ -72,9 +80,9 @@ let weatherCompare = {
         document.querySelector(".temp-c").innerText = Math.floor(temp) + " °F";
         document.querySelector(".icon-c").src = "https://openweathermap.org/img/wn/"+ icon + ".png"
         document.querySelector(".description-c").innerText = description;
-        document.querySelector(".humidity-c").innerText = "Humidity: " + humidity;
+        document.querySelector(".humidity-c").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind-c").innerText = "Wind Speed: " + speed + " mph";
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
+        document.getElementById('right').style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
         var minCompare = document.getElementById('compare');
         minCompare.classList.add('min-height');
     },
@@ -90,7 +98,3 @@ document.querySelector(".search-c").addEventListener('keyup', (e) => {
         weatherCompare.searchCompare();
     }
 });
-
-
-
-
